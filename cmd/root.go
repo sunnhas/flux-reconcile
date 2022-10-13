@@ -17,6 +17,12 @@ import (
 const ResourcesFlag = "resources"
 const SignatureKeyFlag = "key"
 
+var (
+	Version = "un-versioned"
+	Commit  = "no-commit"
+	Date    = "no-date"
+)
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "flux-reconcile {webhook}",
@@ -25,6 +31,8 @@ var rootCmd = &cobra.Command{
 This requires the setup of a generic-hmac webhook.
 
 See more information at FluxCD docs: https://fluxcd.io/flux/components/notification/receiver/#generic-hmac-receiver`,
+
+	Version: fmt.Sprintf("%s (%s) build at %s", Version, Commit, Date),
 
 	Args: cobra.ExactArgs(1),
 
